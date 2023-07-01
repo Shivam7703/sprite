@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form</title>
+    <style>
+        * {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin: 0;
+            padding: 0;
+            font-size: 23px;
+        }
+        .flex {
+            display: flex;
+            flex-direction: column;
+        }
+        body {
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 40px;
+            margin: 50px 0px 30px;
+            font-family: sans-serif;
+        }
+
+        form {
+            padding:30px 20px 10px;
+            border: 3px solid black;
+            box-shadow: -10px 7px 15px 5px black;
+            border-radius: 30px;
+            background-color: rgb(230, 235, 230);
+            width: 600px;
+            align-items: flex-start;
+        }
+
+        hr {
+            margin: 25px 0px 10px;
+            height: 3px;
+            background-color: black;
+            width: 100%;
+        }
+
+        .nam {
+            margin:20px;
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        input[type="text"],[type="email"] {
+            margin: 8px 20px 20px;
+            width: 92%;
+            height: 27px;
+            font-size: 18px;
+        }
+
+        h3 {
+            margin: 18px;
+            font-size: 32px;
+        }
+
+        .select {
+            display: flex;
+            width: 30%;
+            justify-content: space-around;
+        }
+
+        .bot {
+            width: 100%;
+            align-items: center;
+        }
+
+        button {
+            margin: 29px 0px 8px;
+            color: beige;
+            font-size: 21px;
+            padding: 5px;
+            background-color: rgb(9, 173, 9);
+        }
+        button:hover {
+            background-color: red;
+            transform: scale(0.9);
+        }
+        @media only screen and (max-width: 600px) {
+  body {
+    align-items: center;
+    background-color: rgb(166, 208, 222);
+    width: 100%;
+  }
+  form{
+    margin-left: 7px;
+    transform: scale(0.9);
+    padding:30px 25px 10px 0px;
+    width: 80vw;
+    height: auto;
+  }
+  hr{
+    margin: 0px 24px 5px;
+    width: 90%;
+  }
+  h1{
+    margin: 10px 3px 4px;
+    text-align: center;
+    font-size: 27px;
+  }
+  .nam{
+    margin-top: -15px;
+    font-size: 18px;
+  }
+  h3{
+    margin: -1px 0px 15px;
+    text-align: center;
+    font-size: 23px;
+  }
+  .select{
+    width: 90%;
+  }
+  .bot{
+    width: 90%;
+    margin-left: 12%;
+  }
+}
+    </style>
+</head>
+
+<body class="flex">
+    <h1>Please fill out this form carefully</h1>
+    <form onsubmit="event.preventDefault(); sale();">
+        <label class="nam" for="name">Enter your name</label>
+        <input type="text" name="name" id="name" required>
+
+        <label class="nam" for="email">Enter your email id</label>
+        <input type="email" name="email" id="email" required>
+
+        <hr>
+
+        <div class="flex bot">
+            <h3>Are you a vegetarian?</h3>
+            <div class="select">
+                <div>
+                    <input type="radio" id="yes" name="drone" value="yes" checked>
+                    <label for="yes">Yes</label>
+                </div>
+                <div>
+                    <input type="radio" id="no" name="drone" value="no">
+                    <label for="no">No</label>
+                </div>
+            </div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    <script>
+        function sale() {
+            var nameInput = document.getElementById("name");
+            var emailInput = document.getElementById("email");
+            var selectedDrone = document.querySelector("input[name='drone']:checked");
+            var h = document.querySelector("h1");
+
+            if (nameInput.value === "" || emailInput.value === "") {
+              return  alert("Please fill out all fields.");
+            }
+            else{
+            if (selectedDrone.value === "yes") {
+                h.innerHTML = "Thank you for your submission. You are a vegetarian.";
+            } else {
+                h.innerHTML = "Thank you for your submission. You are not a vegetarian.";
+            }
+           return nameInput.value = "" , 
+            emailInput.value = "";
+        }
+        }
+    </script>
+</body>
+
+</html>
